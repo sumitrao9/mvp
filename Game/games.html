@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kidex Games</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <style>
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .game-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+      position: relative;
+    }
+    .game-card:hover {
+      transform: translateY(-8px) scale(1.03) rotate(-1deg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+    }
+    .game-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .game-info {
+      padding: 1rem;
+    }
+    .play-btn {
+      display: block;
+      background: linear-gradient(90deg,#4f46e5,#22d3ee);
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: background 0.2s;
+    }
+    .play-btn:hover {
+      background: linear-gradient(90deg,#22d3ee,#4f46e5);
+      color: #fff;
+    }
+    .difficulty {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+    .featured-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #FF9800;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      z-index: 2;
+    }
+    .nav-tabs .nav-link {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #4f46e5;
+      background: #f1f5f9;
+      border-radius: 1rem 1rem 0 0;
+      margin-right: 0.3rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-tabs .nav-link.active {
+      background: linear-gradient(90deg,#4f46e5,#22d3ee);
+      color: #fff;
+      border: none;
+    }
+    @media (max-width: 600px) {
+      .games-grid { grid-template-columns: 1fr; padding: 1rem; }
+      .game-card img { height: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Kidex</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="games.html">Games</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+        <button class="btn btn-warning ms-auto" id="random-game-btn" aria-label="Random Game">🎲 Random Game</button>
+      </div>
+    </div>
+  </nav>
+  <main class="container py-4">
+    <h1 class="text-center mb-4">Our Games</h1>
+    <ul class="nav nav-tabs mb-4" id="gameTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="color-match-tab" data-bs-toggle="tab" data-bs-target="#color-match" type="button" role="tab" aria-controls="color-match" aria-selected="true"><span class="me-1">🎨</span>Color Match <span class="featured-badge">Featured</span><span class="visually-hidden">Tab</span></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="memory-game-tab" data-bs-toggle="tab" data-bs-target="#memory-game" type="button" role="tab" aria-controls="memory-game" aria-selected="false"><span class="me-1">🧠</span>Memory Game<span class="visually-hidden">Tab</span></button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="number-crunch-tab" data-bs-toggle="tab" data-bs-target="#number-crunch" type="button" role="tab" aria-controls="number-crunch" aria-selected="false"><span class="me-1">🔢</span>Number Crunch<span class="visually-hidden">Tab</span></button>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="color-match" role="tabpanel" aria-labelledby="color-match-tab">
+        <iframe src="games/color-match.html" style="width:100%;height:600px;border:none;border-radius:1rem;box-shadow:0 4px 16px rgba(0,0,0,0.10);" title="Color Match Game"></iframe>
+      </div>
+      <div class="tab-pane fade" id="memory-game" role="tabpanel" aria-labelledby="memory-game-tab">
+        <div class="text-center p-5">Memory Game coming soon!</div>
+      </div>
+      <div class="tab-pane fade" id="number-crunch" role="tabpanel" aria-labelledby="number-crunch-tab">
+        <div class="text-center p-5">Number Crunch coming soon!</div>
+      </div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('random-game-btn').onclick = function() {
+      const games = ['color-match', 'memory-game', 'number-crunch'];
+      const idx = Math.floor(Math.random()*games.length);
+      document.querySelector(`#${games[idx]}-tab`).click();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kidex - Color Match Game</title>
+  <!-- Bootstrap 5 CSS (CDN for simplicity, can be localized) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Playful Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Comic+Neue:700&display=swap" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container py-4 d-flex flex-column align-items-center justify-content-center min-vh-100">
+    <h1 class="game-title">Color Match!</h1>
+    <p class="game-subtitle">Remember the sequence and click the colors!</p>
+
+    <canvas id="color-canvas" aria-label="Color match game canvas" role="img"></canvas>
+
+    <div class="color-btns my-3 d-flex flex-wrap justify-content-center gap-3" role="group" aria-label="Color selection buttons">
+      <!-- Buttons will be dynamically updated by JS -->
+      <button class="color-btn" data-color="red" aria-label="Red"></button>
+      <button class="color-btn" data-color="blue" aria-label="Blue"></button>
+      <button class="color-btn" data-color="green" aria-label="Green"></button>
+      <button class="color-btn" data-color="yellow" aria-label="Yellow"></button>
+      <button class="color-btn" style="display:none;"></button>
+      <button class="color-btn" style="display:none;"></button>
+      <button class="color-btn" style="display:none;"></button>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 flex-wrap mb-3">
+      <button id="restart-btn" class="btn btn-success btn-lg">Start Game</button>
+      <select id="difficulty" class="form-select w-auto" aria-label="Select difficulty">
+        <option value="3" selected>Easy</option>
+        <option value="5">Medium</option>
+        <option value="7">Hard</option>
+      </select>
+      <button id="sound-btn" class="btn btn-outline-primary" aria-pressed="true" aria-label="Toggle sound">🔊</button>
+      <button id="fullscreen-btn" class="btn btn-outline-secondary" aria-label="Toggle fullscreen">⛶</button>
+      <button id="help-btn" class="btn btn-outline-info" aria-label="Show instructions">?</button>
+    </div>
+
+    <div class="game-message" id="game-message" aria-live="polite" role="status">Click 'Start Game'</div>
+
+    <div class="d-flex justify-content-center gap-4 mt-3 flex-wrap">
+      <div>Score: <span id="score">0</span></div>
+      <div>High Score: <span id="high-score">0</span></div>
+      <div>Time: <span id="time">60</span>s</div>
+    </div>
+  </div>
+
+  <div class="confetti-container" id="confetti-container" aria-hidden="true"></div>
+
+  <!-- Instructions Modal -->
+  <div class="modal fade" id="instructions-modal" tabindex="-1" aria-labelledby="instructions-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="instructions-label">How to Play</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Watch the sequence of colors shown on the screen, then repeat it by clicking the color buttons in the same order.</p>
+          <p>Use the difficulty selector to change the number of colors.</p>
+          <p>Toggle sound and fullscreen using the buttons.</p>
+          <p>Try to get the highest score before time runs out!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- External game logic -->
+  <script src="../js/color-match.js"></script>
+</body>
+</html>
